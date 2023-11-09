@@ -25,7 +25,7 @@ public class ProductService {
                         product.getType(),
                         product.getPrice().multiply(BigDecimal.ONE.subtract(discountValue)),
                         product.hasDiscount(),
-                        product.getAdditionDate()
+                        product.getAddedAt()
                 ))
                 .collect(Collectors.toList());
     }
@@ -39,7 +39,7 @@ public class ProductService {
 
     public static List<Product> getThreeMostRecentlyAddedProducts(List<Product> products) {
         return products.stream()
-                .sorted(Comparator.comparing(Product::getAdditionDate).reversed())
+                .sorted(Comparator.comparing(Product::getAddedAt).reversed())
                 .limit(3)
                 .toList();
     }
@@ -48,7 +48,7 @@ public class ProductService {
         LocalDate currentDate = LocalDate.now();
         return products.stream()
                 .filter(product -> product.getType().equals("Book") && product.getPrice().compareTo(new BigDecimal("75")) <= 0)
-                .filter(product -> product.getAdditionDate().getYear() == currentDate.getYear())
+                .filter(product -> product.getAddedAt().getYear() == currentDate.getYear())
                 .map(Product::getPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }

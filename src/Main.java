@@ -55,7 +55,7 @@ public class Main {
         List<Product> recentlyAddedProducts = ProductService.getThreeMostRecentlyAddedProducts(recentProducts);
 
         System.out.println("Three Most Recently Added Products:");
-        recentlyAddedProducts.forEach(product -> System.out.println("Type: " + product.getType() + ", Price: " + product.getPrice() + ", Date Added: " + product.getAdditionDate()));
+        recentlyAddedProducts.forEach(product -> System.out.println("Type: " + product.getType() + ", Price: " + product.getPrice() + ", Date Added: " + product.getAddedAt()));
 
         //5.2
         List<Product> thisYearProducts = new ArrayList<>();
@@ -80,7 +80,7 @@ public class Main {
         for (Map.Entry<String, List<Product>> entry : groupedProducts.entrySet()) {
             System.out.println(entry.getKey() + ":");
             for (Product product : entry.getValue()) {
-                System.out.println("Id: " + product.getId() + ", Price: " + product.getPrice() + ", Date Added: " + product.getAdditionDate());
+                System.out.println("Id: " + product.getId() + ", Price: " + product.getPrice() + ", Date Added: " + product.getAddedAt());
             }
         }
     }

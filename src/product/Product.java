@@ -6,18 +6,18 @@ import java.time.LocalDateTime;
 public class Product {
     final private String type;
     final private BigDecimal price;
-    final private boolean discountCanBeApplyed;
-    final private LocalDateTime additionDate;
+    final private boolean discount;
+    final private LocalDateTime addedAt;
     private static int nextId = 1;
 
     final private int id;
 
-    public Product(String type, BigDecimal price, boolean discountCanBeApplyed, LocalDateTime additionDate) {
+    public Product(String type, BigDecimal price, boolean discount, LocalDateTime addedAt) {
         this.id = nextId++;
         this.type = type;
         this.price = price;
-        this.discountCanBeApplyed = discountCanBeApplyed;
-        this.additionDate = additionDate;
+        this.discount = discount;
+        this.addedAt = addedAt;
     }
 
     public int getId() {
@@ -33,11 +33,11 @@ public class Product {
     }
 
     public boolean hasDiscount() {
-        return discountCanBeApplyed;
+        return discount;
     }
 
-    public LocalDateTime getAdditionDate() {
-        return additionDate;
+    public LocalDateTime getAddedAt() {
+        return addedAt;
     }
 
 
@@ -46,8 +46,8 @@ public class Product {
         return "Product{" +
                 "type='" + type + '\'' +
                 ", price=" + price +
-                ", has discount=" + discountCanBeApplyed +
-                ", date=" + additionDate +
+                ", has discount=" + discount +
+                ", date=" + addedAt +
                 '}';
     }
 }
